@@ -1,16 +1,16 @@
 //common functions that can be used in different cases
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:3000/";
 
-function Get(url) {
-    return ApiRequest(url, "GET");
+async function Get(path) {
+    return await ApiRequest(BASE_URL + path, "GET");
 }
 
-function Post(url, body) {
-    return ApiRequest(url, "POST", body);
+async function Post(path, body) {
+    return await ApiRequest(BASE_URL + path, "POST", body);
 }
 
-function ApiRequest(url, type, body) {
-    $.ajax({
+async function ApiRequest(url, type, body) {
+    return await $.ajax({
         url: url,
         type: type,
         data: JSON.stringify(body),
