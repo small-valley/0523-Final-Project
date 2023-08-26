@@ -84,5 +84,4 @@ export const validateTransaction = (transaction) => {
   }
   return "validated";
 };
-
 export default { addTransaction, getAllTransactions, validateTransaction };

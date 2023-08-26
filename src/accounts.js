@@ -1,4 +1,25 @@
-const accounts = [];
+const accounts = [
+  {
+    username: "test1",
+    id: 1,
+    transactions: [],
+},
+{
+    username: "test2",
+    id: 2,
+    transactions: [],
+},
+{
+    username: "test3",
+    id: 3,
+    transactions: [],
+},
+{
+  username: "test4",
+  id: 4,
+  transactions: [],
+},
+];
 
 export const getAccounts = () => {
   return accounts;
