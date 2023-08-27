@@ -29,12 +29,15 @@ async function ApiRequest(url, type, body) {
 $(document).ready(async () => {
   
   //1. show-hide from,to,id depending on type
+  
+  const accountId=$('#accountId');
+  const accountIdFromField = $('#accountIdFrom');
+  const accountIdToField = $('#accountIdTo');
+  //accountIdFrom &accountIdTo is hidden as default
+  accountIdFromField.hide();
+  accountIdToField.hide();
   $('input[name="transactionType"]').change(() => {
     const type = $('input[name="transactionType"]:checked').val();
-    const accountId=$('#accountId');
-    const accountIdFromField = $('#accountIdFrom');
-    const accountIdToField = $('#accountIdTo');
-
     if (type !== 'Transfer') {
       accountIdFromField.hide();
       accountIdToField.hide();
