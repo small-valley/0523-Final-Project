@@ -27,22 +27,43 @@ async function ApiRequest(url, type, body) {
 
 //2023.8.25 
 $(document).ready(async () => {
+  
+  //1. show-hide from,to,id depending on type
+  $('input[name="transactionType"]').change(() => {
+    const type = $('input[name="transactionType"]:checked').val();
+    const accountId=$('#accountId');
+    const accountIdFromField = $('#accountIdFrom');
+    const accountIdToField = $('#accountIdTo');
 
-  // トランザクション追加ボタンがクリックされたときの処理
+    if (type !== 'Transfer') {
+      accountIdFromField.hide();
+      accountIdToField.hide();
+      accountId.show();
+      
+    } else {
+      accountIdFromField.show();
+      accountIdToField.show();
+      accountId.hide();
+    }
+  });
+  
+
+
+  //2.  process when clicked add-transaction-buton
   $('#add-transaction').click(async () => {
-      const transactionType = $('input[name="transactionType"]:checked').val();
-        const accountId = parseInt($('#accountId').val());
-        // const accountIdFrom = parseInt($('#accountIdFrom option:selected').val());
-        // const accountIdTo = parseInt($('#accountIdTo option:selected').val());
-        const categoryId = parseInt($('#categoryId').val());
-        const description = $('#description').val();
-        const amount = $('#amount').val();
-    
+      var transactionType = $('input[name="transactionType"]:checked').val();
+      var accountId = (transactionType !== 'Transfer') ? parseInt($('#accountId').val()) : null;     
+      var accountIdFrom = (transactionType === 'Transfer') ? parseInt($('#accountIdFrom').val()) : null;
+      var accountIdTo = (transactionType === 'Transfer') ? parseInt($('#accountIdTo').val()) : null;
+      var categoryId = parseInt($('#categoryId').val());
+      var description = $('#description').val();
+      var amount = $('#amount').val();
+
       const result = await Post("transactions", {
           newTransaction: {
               accountId: accountId, // account ID for Deposits or Withdraws
-              accountIdFrom: null, // sender ID if type = 'Transfer', otherwise null
-              accountIdTo: null, // receiver ID if type = 'Transfer', otherwise null,
+              accountIdFrom: accountIdFrom, // sender ID if type = 'Transfer', otherwise null
+              accountIdTo: accountIdTo, // receiver ID if type = 'Transfer', otherwise null,
               type: transactionType, // 'Deposit', 'Withdraw', 'Transfer'
               amount: amount, // amount of the transaction
               categoryId: categoryId, // category ID
@@ -52,35 +73,49 @@ $(document).ready(async () => {
       console.log(result);
 
       // ローカルストレージにトランザクション情報を追加保存
-      const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
-      storedTransactions.push(...result); // サーバーからのレスポンスをローカルストレージに保存
-      localStorage.setItem('transactions', JSON.stringify(storedTransactions));
+      // const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
+      // storedTransactions.push(...result); // サーバーからのレスポンスをローカルストレージに保存
+      // localStorage.setItem('transactions', JSON.stringify(storedTransactions));
   });
 
 
-  //display lists of transactions
+  //3. display lists of transactions
   try {
-    // API リクエストを使ってトランザクション情報を取得
+    // get transaction info by API request
     const transactionsResponse = await Get("transactions");
+    const categoryResponse=await Get("categories");
+    const accountsResponse = await Get("accounts"); 
+
+    // アカウント情報を連想配列に整形
+    const accountMap = {};
+    accountsResponse.forEach(account => {
+      accountMap[account.id] = account;
+    });
+
+    // カンテゴリ情報を連想配列に整形
+    const categoryMap = {};
+    categoryResponse.forEach(category => {
+      categoryMap[category.id] = category;
+    });
+
     console.log(transactionsResponse);
     
-    // テーブルの tbody 要素を取得
+    // get t-body 
     const $tableBody = $('#transaction-table-body');
 
     transactionsResponse.forEach((account)=>{
-      // 取得したトランザクション情報をテーブルに追加
-      let user='dammy';
+      // add transactions info to table
       account.forEach((transaction) => {
         const $row = $('<tr>');
         $row.html(`
           <td>${transaction.id}</td>d
-          <td>${transaction.accountId}</td>
+          <td>${accountMap[transaction.accountId].username}</td>
           <td>${transaction.type}</td>
-          <td>${transaction.categoryId}</td>
+          <td>${categoryMap[transaction.categoryId].name}</td>
           <td>${transaction.description}</td>
           <td>${transaction.amount}</td>
-          <td>${transaction.accountIdFrom}</td>
-          <td>${transaction.accountIdTo}</td>
+          <td>${transaction.accountIdFrom ? accountMap[transaction.accountIdFrom].username : '-'}</td>
+          <td>${transaction.accountIdTo ? accountMap[transaction.accountIdTo].username : '-'}</td>
         `);
         $tableBody.append($row);
       });
