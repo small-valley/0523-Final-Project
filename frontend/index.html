@@ -20,25 +20,52 @@
       <input type="text" />
       <button>Add new account</button>
     </form>
-    <form action="">
-      New Transaction: Deposit
-      <input type="radio" />
+    <hr><!-- add temporaly -->
+    <form action="" id="transaction-form">
+      New Transaction:
+      <br><!-- add temporaly -->
+      Deposit
+      <input type="radio" name="transactionType" value="Deposit" id="type-deposit" />
       Withdraw
       <input type="radio" name="transactionType" value="Withdraw" id="type-withdraw" />
       Transfer
-      <input type="radio" />
+      <input type="radio" name="transactionType" value="Transfer" id="type-transfer" />
+      <br><!-- add temporaly -->
       Account:
-      <select></select>
-
+      <select name="accountId" id="accountId">
+        <!-- add for test -->
+        <option value=''></option>
+        <option value=1>test1</option>
+        <option value=2>test2</option>
+        <option value=3>test3</option>
+        <option value=4>test4</option>
+      </select>
+      <br><!-- add temporaly -->
       From:
-      <select></select>
-
+      <select name="accountIdFrom" id="accountIdFrom">
+        <!-- add for test -->
+        <option value=''></option>
+        <option value=1>test1</option>
+        <option value=2>test2</option>
+        <option value=3>test3</option>
+        <option value=4>test4</option>
+      </select>
+      <br><!-- add temporaly -->
       To:
-      <select></select>
+      <select name="accountIdTo" id="accountIdTo">
+        <!-- add for test -->
+        <option value=''></option>
+        <option value=1>test1</option>
+        <option value=2>test2</option>
+        <option value=3>test3</option>
+        <option value=4>test4</option>
+      </select>
+      <br><!-- add temporaly -->
       Category:
-      <select></select>
-      <input type="text" />
-      <button type="button">Add new category</button>
+      <select name="categoryId" id="categoryId">
+      </select>
+      <input type="text" name="category-input" id="category-input" />
+      <button type="button" id="category-add-button">Add new category</button>
 
       Description
       <input type="text" name="description" id="description" />
