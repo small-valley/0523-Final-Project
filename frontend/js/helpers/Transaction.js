@@ -30,7 +30,7 @@ $(document).ready(async () => {
       var accountId = (transactionType !== 'Transfer') ? parseInt($('#accountId').val()) : null;     
       var accountIdFrom = (transactionType === 'Transfer') ? parseInt($('#accountIdFrom').val()) : null;
       var accountIdTo = (transactionType === 'Transfer') ? parseInt($('#accountIdTo').val()) : null;
-      var categoryId = parseInt($('#category-select').val());
+      var categoryId = parseInt($('#categoryId').val());
       var description = $('#description').val();
       var amount = $('#amount').val();
 
