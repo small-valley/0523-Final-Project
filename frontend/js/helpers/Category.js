@@ -2,7 +2,7 @@ const CATEGORY_API_PATH = "categories";
 
 $(async () => {
     //for initial loading, set categories to select box
-    const categorySelect = $("#categoryId"); //2023.8.26 change id.
+    const categorySelect = $("#category-select");
     const categories = await Get(CATEGORY_API_PATH);
     //set default value
     categorySelect.append(`<option value="-1">---</option>`);
