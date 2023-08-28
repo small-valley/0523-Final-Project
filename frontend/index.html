@@ -21,47 +21,23 @@
         <input type="text" />
         <button>Add new account</button>
       </form>
-      <hr><!-- add temporaly -->
       <form action="" id="transaction-form">
         New Transaction: 
-        <br><!-- add temporaly -->
         Deposit
         <input type="radio" name="transactionType" value="Deposit" id="type-deposit" checked/>
         Withdraw
         <input type="radio" name="transactionType" value="Withdraw" id="type-withdraw"/>
         Transfer
         <input type="radio" name="transactionType" value="Transfer" id="type-transfer"/>
-        <br><!-- add temporaly -->
         Account:
         <select name="accountId" id="accountId">
-          <!-- add for test -->
-          <option value=''></option>
-          <option value=1>test1</option>
-          <option value=2>test2</option>
-          <option value=3>test3</option>
-          <option value=4>test4</option>
         </select>
-        <br><!-- add temporaly -->
         From:
         <select name="accountIdFrom" id="accountIdFrom">
-          <!-- add for test -->
-          <option value=''></option>
-          <option value=1>test1</option>
-          <option value=2>test2</option>
-          <option value=3>test3</option>
-          <option value=4>test4</option>
         </select>
-        <br><!-- add temporaly -->
         To:
         <select name="accountIdTo" id="accountIdTo">
-          <!-- add for test -->
-          <option value=''></option>
-          <option value=1>test1</option>
-          <option value=2>test2</option>
-          <option value=3>test3</option>
-          <option value=4>test4</option>
         </select>
-        <br><!-- add temporaly -->
         Category:
         <select name="categoryId" id="category-select">
         </select>
@@ -76,7 +52,6 @@
 
         <button id="add-transaction">Add transaction</button>
       </form>
-      <hr><!-- add temporaly -->
       Account summary
       <ul></ul>
       Filter by account:
@@ -92,7 +67,6 @@
           <th>From</th>
           <th>To</th>
         </tr>
-        <!-- 2023.8.25 edit here(taisei) -->
         <tbody id="transaction-table-body">
         </tbody>
       </table>
