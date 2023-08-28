@@ -17,20 +17,20 @@
     myTrakr
     <main>
       <div class="newAccount">
-        <form action="" onsubmit="addAccount(event)">
+        <form id="addAcc" action="">
           New Account:
           <input type="text" id="accountInput" />
-          <button>Add new account</button>
+          <button id="accBtn">Add new account</button>
         </form>
         <h3>Account summary</h3>
         <table id="summary">
-          <tr>
+          <tr class="accountTable">
             <th>Account</th>
             <th>Balance</th>
           </tr>
-          <tr>
-            <th></th>
-            <th></th>
+          <tr id="tableDetail">
+            <td id="accName"></td>
+            <td id="accBalance"></td>
           </tr>
         </table>
       </div>
