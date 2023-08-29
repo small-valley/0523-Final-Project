@@ -117,4 +117,3 @@ $(document).ready(async() => {
         return filteredTransactions
     }
   }
-
