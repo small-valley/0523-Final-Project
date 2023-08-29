@@ -30,14 +30,11 @@
         Transfer
         <input type="radio" name="transactionType" value="Transfer" id="type-transfer"/>
         Account:
-        <select name="accountId" id="accountId">
-        </select>
+        <select name="accountId" id="accountId"></select>
         From:
-        <select name="accountIdFrom" id="accountIdFrom">
-        </select>
+        <select name="accountIdFrom" id="accountIdFrom"></select>
         To:
-        <select name="accountIdTo" id="accountIdTo">
-        </select>
+        <select name="accountIdTo" id="accountIdTo"></select>
         Category:
         <select name="categoryId" id="category-select">
         </select>
@@ -55,7 +52,18 @@
       Account summary
       <ul></ul>
       Filter by account:
-      <select></select>
+      <select id="filter-account"></select>
+
+      Filter by category:
+      <select id="filter-category"></select>
+
+      Filter by transaction type:
+      <select id="filter-type">
+        <option value=''>---</option>
+        <option value='Deposit'>Deposit</option>
+        <option value='Withdraw'>Withdraw</option>
+        <option value='Transfer'>Transfer</option>
+      </select>
       <table>
         <tr>
           <th>Id</th>
@@ -77,6 +85,7 @@
     <script src="./js/helpers/Account.js" defer></script>
     <script src="./js/helpers/Category.js" defer></script>
     <script src="./js/helpers/Transaction.js" defer></script>
+    <script src="./js/helpers/Filter.js" defer></script>
     <script src="./js/index.js" defer></script>
   </body>
 </html>
