@@ -109,10 +109,36 @@
       </table>
     </main>
 
-    <script src="./js/helpers/Common.js" defer></script>
-    <script src="./js/helpers/Account.js" defer></script>
-    <script src="./js/helpers/Category.js" defer></script>
-    <script src="./js/helpers/Transaction.js" defer></script>
-    <script src="./js/index.js" defer></script>
-  </body>
+      <button id="add-transaction" disabled>Add transaction</button>
+    </form>
+    <hr><!-- add temporaly -->
+    Account summary
+    <ul></ul>
+    Filter by account:
+    <select></select>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Transaction Type</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>From</th>
+        <th>To</th>
+      </tr>
+      <!-- 2023.8.25 edit here(taisei) -->
+      <tbody id="transaction-table-body">
+      </tbody>
+    </table>
+  </main>
+
+
+  <script src="./js/helpers/Common.js" defer></script>
+  <script src="./js/helpers/Account.js" defer></script>
+  <script src="./js/helpers/Category.js" defer></script>
+  <script src="./js/helpers/Transaction.js" defer></script>
+  <script src="./js/index.js" defer></script>
+</body>
+
 </html>
