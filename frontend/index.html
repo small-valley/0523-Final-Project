@@ -16,9 +16,10 @@
   </head>
   <body>
     <div id="navBar">
-      <h2>myTrakr</h2>
+      <h2 id="myTrakr">myTrakr</h2>
       <nav>
-        <a href="index.html" class="active">Home</a>
+        <a href="home.html">Home</a>
+        <a href="index.html" class="active">Account Summary</a>
         <a href="addAcc.html">Add Accounts</a>
         <a href="newTransaction.html">New Transaction</a>
       </nav>
@@ -56,7 +57,13 @@
         <tbody id="transaction-table-body"></tbody>
       </table>
     </main>
+    <script>
+      var myTrakrHeading = document.getElementById("myTrakr");
 
+      myTrakrHeading.addEventListener("click", function () {
+        window.location.href = "home.html";
+      });
+    </script>
     <script src="./js/helpers/Common.js" defer></script>
     <script src="./js/helpers/Account.js" defer></script>
     <script src="./js/helpers/Category.js" defer></script>

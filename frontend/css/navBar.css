@@ -25,10 +25,13 @@ body {
 #navBar {
   background-color: gainsboro;
   width: 20vw;
-  min-height: 100vh; /* Changed 'height' to 'min-height' */
+  height: 100vh; 
+  /* position: fixed;  */
+  top: 0; 
+  left: 0; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Added to push the content to the top and bottom */
+  justify-content: space-between;
 }
 
 #navBar h2 {
@@ -44,6 +47,7 @@ nav {
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
+  overflow-y: auto;
   padding-bottom: 1rem;
 }
 
@@ -60,7 +64,7 @@ nav a {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  transition: background-color 0.3s, transform 0.3s; /* Added 'transform' */
+  transition: background-color 0.3s, transform 0.3s; 
 }
 
 nav a:hover {
