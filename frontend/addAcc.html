@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTrakr</title>
+    <!-- jQuery link -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      defer
+    ></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/navBar.css" />
+    <link rel="stylesheet" href="./css/addAcc.css" />
+  </head>
+  <body>
+    <div id="navBar">
+      <h2>myTrakr</h2>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="addAcc.html" class="active">Add Accounts</a>
+        <a href="newTransaction.html">New Transaction</a>
+      </nav>
+    </div>
+    <main>
+      <div id="main">
+        <form id="addAcc" action="">
+          New Account:
+          <input type="text" id="accountInput" />
+          <button id="accBtn">Add new account</button>
+        </form>
+        <h3>Account summary</h3>
+        <table id="summary">
+          <thead>
+            <tr>
+              <th>Account</th>
+              <th>Balance</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="accName"></tbody>
+        </table>
+        <div id="myModal" class="modal" style="display: none">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Account already exists!</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./js/helpers/Common.js" defer></script>
+    <script src="./js/helpers/Account.js" defer></script>
+    <script src="./js/helpers/Category.js" defer></script>
+    <script src="./js/helpers/Transaction.js" defer></script>
+    <script src="./js/helpers/Filter.js" defer></script>
+    <script src="./js/index.js" defer></script>
+  </body>
+</html>

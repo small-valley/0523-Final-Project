@@ -1,0 +1,81 @@
+/* addAcc.css */
+
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-top: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 1rem; 
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width:70vw;
+}
+
+/* Apply styles to the list and filters */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+/* Apply styles to the table */
+table {
+    width: 70vw;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* Apply specific styles to the table header */
+th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+/* Style the tbody */
+tbody {
+    background-color: #fff;
+}
+
+/* Add a hover effect to table rows */
+tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Style the hr element */
+hr {
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+/* Style the filters' labels */
+label {
+    font-weight: bold;
+    margin-right: 5px;
+}

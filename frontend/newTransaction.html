@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTrakr</title>
+    <!-- jQuery link -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      defer
+    ></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/navBar.css" />
+    <link rel="stylesheet" href="./css/newTrans.css" />
+  </head>
+  <body>
+    <header>
+      <div id="navBar">
+        <h2>myTrakr</h2>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="addAcc.html">Add Accounts</a>
+          <a href="newTransaction.html" class="active">New Transaction</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="transaction">
+        <form action="" id="transaction-form">
+          <div id="selectBar">
+            Deposit
+            <input
+              type="radio"
+              name="transactionType"
+              value="Deposit"
+              id="type-deposit"
+              checked
+            />
+            Withdraw
+            <input
+              type="radio"
+              name="transactionType"
+              value="Withdraw"
+              id="type-withdraw"
+            />
+            Transfer
+            <input
+              type="radio"
+              name="transactionType"
+              value="Transfer"
+              id="type-transfer"
+            />
+          </div>
+          Account:
+          <select name="accountId" id="accountId"></select>
+          From:
+          <select name="accountIdFrom" id="accountIdFrom"></select>
+          To:
+          <select name="accountIdTo" id="accountIdTo"></select>
+          Category:
+          <select name="categoryId" id="category-select"></select>
+          <input type="text" name="category-input" id="category-input" />
+          <button type="button" id="category-add-button">
+            Add new category
+          </button>
+
+          Description
+          <input type="text" name="description" id="description" />
+
+          Amount:
+          <input type="number" name="amount" id="amount" />
+
+          <button id="add-transaction" disabled>Add transaction</button>
+        </form>
+      </div>
+
+      <hr />
+    </main>
+
+    <script src="./js/helpers/Common.js" defer></script>
+    <script src="./js/helpers/Account.js" defer></script>
+    <script src="./js/helpers/Category.js" defer></script>
+    <script src="./js/helpers/Transaction.js" defer></script>
+    <script src="./js/helpers/Filter.js" defer></script>
+    <script src="./js/index.js" defer></script>
+  </body>
+</html>
