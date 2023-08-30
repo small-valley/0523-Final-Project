@@ -41,18 +41,45 @@ $(document).ready(async () => {
         var description = $("#description").val();
         var amount = $("#amount").val();
 
-        const result = await Post("transactions", {
-            newTransaction: {
-                accountId: accountId, // account ID for Deposits or Withdraws
-                accountIdFrom: accountIdFrom, // sender ID if type = 'Transfer', otherwise null
-                accountIdTo: accountIdTo, // receiver ID if type = 'Transfer', otherwise null,
-                type: transactionType, // 'Deposit', 'Withdraw', 'Transfer'
-                amount: amount, // amount of the transaction
-                categoryId: categoryId, // category ID
-                description: description, // description of the transaction
-            },
-        });
-        console.log(result);
+
+        //get info as text
+        var accountName= $("#accountId").find(":selected").text();
+        var accountNameFrom= $("#accountIdFrom").find(":selected").text();
+        var accountNameTo= $("#accountIdTo").find(":selected").text();
+        var categoryName = $("#category-select").find(":selected").text();
+        //create confirmation text
+        if(transactionType==='Transfer'){
+            var confirmationMessage=`Do you want to add the transaction?
+            
+            Type: ${transactionType}
+            ${accountNameFrom} ▶︎▶︎▶︎ ${accountNameTo}
+            Category: ${categoryName}
+            Amount: ${amount}
+            Description: ${description}`;
+        }else{
+            var confirmationMessage=`Do you want to add the transaction?
+
+            Account: ${accountName}
+            Type: ${transactionType}
+            Category: ${categoryName}
+            Amount: ${amount}
+            Description: ${description}`;
+        }
+        //set confirmation window
+        const confirmation = window.confirm(confirmationMessage);
+        if (confirmation){
+            const result = await Post("transactions", {
+                newTransaction: {
+                    accountId: accountId, // account ID for Deposits or Withdraws
+                    accountIdFrom: accountIdFrom, // sender ID if type = 'Transfer', otherwise null
+                    accountIdTo: accountIdTo, // receiver ID if type = 'Transfer', otherwise null,
+                    type: transactionType, // 'Deposit', 'Withdraw', 'Transfer'
+                    amount: amount, // amount of the transaction
+                    categoryId: categoryId, // category ID
+                    description: description, // description of the transaction
+                },
+            });
+        }
     });
 
     //3. display lists of transactions
