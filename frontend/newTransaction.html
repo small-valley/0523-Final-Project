@@ -20,13 +20,24 @@
         <h2 id="myTrakr">myTrakr</h2>
         <nav>
           <a href="home.html">Home</a>
-          <a href="index.html">Account Summary</a>
+
           <a href="addAcc.html">Add Accounts</a>
           <a href="newTransaction.html" class="active">New Transaction</a>
+          <a href="index.html">Transaction List</a>
         </nav>
       </div>
     </header>
     <main>
+      <div class="add-category">
+        <p>Add New Category</p>
+        <input
+          type="text"
+          name="category-input"
+          placeholder="Type Here"
+          id="category-input"
+        />
+        <button type="button" id="category-add-button">Add new category</button>
+      </div>
       <div class="transaction">
         <form action="" id="transaction-form">
           <div id="selectBar">
@@ -53,24 +64,32 @@
               id="type-transfer"
             />
           </div>
-          Account:
+          <p id="acc">Account:</p>
           <select name="accountId" id="accountId"></select>
-          From:
-          <select name="accountIdFrom" id="accountIdFrom"></select>
-          To:
-          <select name="accountIdTo" id="accountIdTo"></select>
-          Category:
-          <select name="categoryId" id="category-select"></select>
-          <input type="text" name="category-input" id="category-input" />
-          <button type="button" id="category-add-button">
-            Add new category
-          </button>
+          <div id="from-to">
+            From:
+            <select name="accountIdFrom" id="accountIdFrom"></select>
+            To:
+            <select name="accountIdTo" id="accountIdTo"></select>
+            Category:
+            <select name="categoryId" id="category-select"></select>
+          </div>
 
           Description
-          <input type="text" name="description" id="description" />
+          <input
+            type="text"
+            placeholder="Type Here"
+            name="description"
+            id="description"
+          />
 
           Amount:
-          <input type="number" name="amount" id="amount" />
+          <input
+            type="number"
+            placeholder="Type Here"
+            name="amount"
+            id="amount"
+          />
 
           <button id="add-transaction" disabled>Add transaction</button>
         </form>
