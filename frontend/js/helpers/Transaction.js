@@ -54,14 +54,16 @@ $(document).ready(async () => {
             Type: ${transactionType}
             ${accountNameFrom} ▶︎▶︎▶︎ ${accountNameTo}
             Category: ${categoryName}
-            Amount: ${amount}`;
+            Amount: ${amount}
+            Description: ${description}`;
         }else{
             var confirmationMessage=`Do you want to add the transaction?
-            
+
             Account: ${accountName}
             Type: ${transactionType}
             Category: ${categoryName}
-            Amount: ${amount}`;
+            Amount: ${amount}
+            Description: ${description}`;
         }
         //set confirmation window
         const confirmation = window.confirm(confirmationMessage);
@@ -78,7 +80,6 @@ $(document).ready(async () => {
                 },
             });
         }
-        console.log(result);
     });
 
     //3. display lists of transactions
