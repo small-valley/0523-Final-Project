@@ -14,7 +14,7 @@ $(document).ready(() => {
         <td><button class="removeBtn" data-account-id="${account.id}">Remove Account</button></td>
       </tr>`
     );
-    $("#account, #from, #to, #FilterByAccount").append(
+    $("#account, #from, #to, #FilterByAccount,#accountId,#accountIdTo,#accountIdFrom").append(
       `<option value="${account.id}">${account.name}</option>`
     );
   }
