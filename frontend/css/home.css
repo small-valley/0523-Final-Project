@@ -15,10 +15,15 @@ h1{
     font-size:40px
 }
 #start{
+    font-size: 1.5rem;
     width:20vw;
     height:7vh;
     border-radius: 1rem;
     animation: bounce 1s infinite;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
 }
 @keyframes bounce {
     0%, 100% {

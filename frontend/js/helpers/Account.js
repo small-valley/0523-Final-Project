@@ -1,16 +1,16 @@
-$(document).ready(() => {
+$(document).ready(async() => {
   // Load accounts from local storage on page load
-  let savedAccounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  // let savedAccounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
   // Filter out any undefined accounts
-  savedAccounts = savedAccounts.filter(account => account && account.id && account.name && account.balance !== undefined);
+  // savedAccounts = savedAccounts.filter(account => account && account.id && account.name && account.balance !== undefined);
 
   // Update the UI with account details
   function updateUI(account) {
     $("#accName").append(
       `<tr>
         <td>${account.name}</td>
-        <td>${account.balance}</td>
+        <td>0</td>
         <td><button class="removeBtn" data-account-id="${account.id}">Remove Account</button></td>
       </tr>`
     );
@@ -18,36 +18,39 @@ $(document).ready(() => {
       `<option value="${account.id}">${account.name}</option>`
     );
   }
-
-  savedAccounts.forEach((account) => {
+async function fetchAccounts(){
+  const result = await Get("accounts");
+  return result;
+}
+await fetchAccounts((account) => {
     updateUI(account);
   });
 
   // Handle the remove account button click event
-  $("#accName").on("click", ".removeBtn", function() {
-    const accountId = $(this).data("account-id");
-    savedAccounts = savedAccounts.filter(account => account.id !== accountId);
-    localStorage.setItem("accounts", JSON.stringify(savedAccounts));
-    $(this).closest("tr").remove();
-  });
+  // $("#accName").on("click", ".removeBtn", function() {
+  //   const accountId = $(this).data("account-id");
+  //   savedAccounts = savedAccounts.filter(account => account.id !== accountId);
+  //   localStorage.setItem("accounts", JSON.stringify(savedAccounts));
+  //   $(this).closest("tr").remove();
+  // });
 
   $("#addAcc").submit((event) => {
     event.preventDefault();
     const newName = $("#accountInput").val().trim();
 
-    const accountExists = savedAccounts.some(account => account.name === newName);
-    if (accountExists) {
-      // Show the modal
-      $("#myModal").css("display", "block");
-      $("#accountInput").val(""); // Clear input
+    // const accountExists = savedAccounts.some(account => account.name === newName);
+    // if (accountExists) {
+    //   // Show the modal
+    //   $("#myModal").css("display", "block");
+    //   $("#accountInput").val(""); // Clear input
   
-      // Close the modal when the close button is clicked
-      $(".close").click(function() {
-        $("#myModal").css("display", "none"); // Hide the modal
-      });
+    //   // Close the modal when the close button is clicked
+    //   $(".close").click(function() {
+    //     $("#myModal").css("display", "none"); // Hide the modal
+    //   });
   
-      return;
-    }
+    //   return;
+    // }
   
 
     $.ajax({
@@ -60,8 +63,8 @@ $(document).ready(() => {
     }).done((data) => {
       // Add new account to savedAccounts
       const newAccount = { id: data.id, name: newName, balance: 0 };
-      savedAccounts.push(newAccount);
-      localStorage.setItem("accounts", JSON.stringify(savedAccounts));
+      // savedAccounts.push(newAccount);
+      // localStorage.setItem("accounts", JSON.stringify(savedAccounts));
 
       // Update the UI
       updateUI(newAccount);
