@@ -19,7 +19,6 @@
       <h2 id="myTrakr">myTrakr</h2>
       <nav>
         <a href="home.html">Home</a>
-
         <a href="addAcc.html">Add Accounts</a>
         <a href="newTransaction.html">New Transaction</a>
         <a href="index.html" class="active">Transaction List</a>
@@ -27,8 +26,6 @@
     </div>
 
     <main>
-      <hr />
-
       Account summary
       <ul></ul>
       <selecter>
@@ -60,16 +57,17 @@
     </main>
     <script>
       var myTrakrHeading = document.getElementById("myTrakr");
-
       myTrakrHeading.addEventListener("click", function () {
         window.location.href = "home.html";
       });
     </script>
-    <script src="./js/helpers/Common.js" defer></script>
-    <script src="./js/helpers/Account.js" defer></script>
-    <script src="./js/helpers/Category.js" defer></script>
-    <script src="./js/helpers/Transaction.js" defer></script>
-    <script src="./js/helpers/Filter.js" defer></script>
-    <script src="./js/index.js" defer></script>
-  </body>
+  <script src="./js/helpers/Common.js" defer></script>
+  <script src="./js/helpers/Notification.js" defer></script>
+  <script src="./js/helpers/Account.js" defer></script>
+  <script src="./js/helpers/Category.js" defer></script>
+  <script src="./js/helpers/Transaction.js" defer></script>
+  <script src="./js/helpers/Filter.js" defer></script>
+  <script src="./js/index.js" defer></script>
+</body>
+
 </html>

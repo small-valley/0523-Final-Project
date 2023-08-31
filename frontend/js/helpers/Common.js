@@ -10,16 +10,25 @@ async function Post(path, body) {
 }
 
 async function ApiRequest(url, type, body) {
-    return await $.ajax({
-        url: url,
-        type: type,
-        data: JSON.stringify(body),
-        contentType: "application/json",
-        success: (data) => {
-            return data;
-        },
-        error: (err) => {
-            console.log(err);
-        },
-    });
+    try {
+        return await $.ajax({
+            url: url,
+            type: type,
+            data: JSON.stringify(body),
+            contentType: "application/json",
+            success: (data) => {
+                return data;
+            },
+            error: (err) => {
+                console.log(err);
+                return err;
+            },
+        });
+    } catch (err) {
+        console.log("catch-error", err);
+        return {
+            status: err.status,
+            errorMessage: err.responseText,
+        };
+    }
 }

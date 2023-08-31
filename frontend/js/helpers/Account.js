@@ -1,43 +1,50 @@
-$(document).ready(async() => {
-  function updateUI(account) {
-    $("#accName").append(
-      `<tr>
-        <td>${account.name}</td>
+function updateUI(account) {
+    $("#accName").append(`
+      <tr>
+        <td>${account.username}</td>
         <td>0</td>
         <td><button class="removeBtn" data-account-id="${account.id}">Remove Account</button></td>
-      </tr>`
-    );
-    $("#account, #from, #to, #FilterByAccount,#accountId,#accountIdTo,#accountIdFrom").append(
-      `<option value="${account.id}">${account.name}</option>`
-    );
-  }
-async function fetchAccounts(){
-  const result = await Get("accounts");
-  return result;
+      </tr>
+    `);
+
+    $(
+        "#account, #from, #to, #FilterByAccount, #accountId, #accountIdTo, #accountIdFrom"
+    ).append(`<option value=${account.id}>${account.username}</option>`);
 }
-await fetchAccounts((account) => {
-    updateUI(account);
-  });
 
-  $("#addAcc").submit((event) => {
-    event.preventDefault();
-    const newName = $("#accountInput").val().trim();
+$(document).ready(async () => {
+    const accounts = await Get("accounts");
 
+    //set default option
+    $(
+        "#account, #from, #to, #FilterByAccount, #accountId, #accountIdTo, #accountIdFrom"
+    ).append(`<option value=-1>---</option>`);
 
-    $.ajax({
-      method: "post",
-      data: {
-        newAccount: newName,
-      },
-      url: "http://localhost:3000/accounts",
-      dataType: "json",
-    }).done((data) => {
-      const newAccount = { id: data.id, name: newName, balance: 0 };
-      // Update the UI
-      updateUI(newAccount);
-
-      // Clear input
-      $("#accountInput").val("");
+    accounts.forEach((account) => {
+        // Update the UI
+        updateUI(account);
     });
-  });
+
+    $("#addAcc").submit(async (event) => {
+        event.preventDefault();
+        const newName = $("#accountInput").val().trim();
+        const result = await Post("accounts", {
+            newAccount: newName,
+        });
+
+        //show result in UI and handle server error
+        if (!showNotification(result)) {
+            return;
+        }
+
+        // Update the UI
+        updateUI({
+            id: result.id,
+            username: newName,
+            balance: 0,
+        });
+
+        // Clear input
+        $("#accountInput").val("");
+    });
 });

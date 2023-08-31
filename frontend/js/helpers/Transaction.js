@@ -3,27 +3,14 @@ const TRANSACTION_TYPE_TRANSFER = "Transfer";
 
 $(document).ready(async () => {
     //1. show-hide from,to,id depending on type
-    const accountId = $("#accountId");
-    const accountIdFromField = $("#accountIdFrom");
-    const accountIdToField = $("#accountIdTo");
-    //accountIdFrom & accountIdTo is hidden as default
-    accountIdFromField.hide();
-    accountIdToField.hide();
+    DisplayAccountSelectElement();
     $('input[name="transactionType"]').change(() => {
-        const type = $('input[name="transactionType"]:checked').val();
-        if (type !== TRANSACTION_TYPE_TRANSFER) {
-            accountIdFromField.hide();
-            accountIdToField.hide();
-            accountId.show();
-        } else {
-            accountIdFromField.show();
-            accountIdToField.show();
-            accountId.hide();
-        }
+        DisplayAccountSelectElement();
     });
 
     //2.  process when clicked add-transaction-buton
-    $("#add-transaction").click(async () => {
+    $("#transaction-form").submit(async (e) => {
+        e.preventDefault();
         var transactionType = $('input[name="transactionType"]:checked').val();
         var accountId =
             transactionType !== TRANSACTION_TYPE_TRANSFER
@@ -41,23 +28,22 @@ $(document).ready(async () => {
         var description = $("#description").val();
         var amount = $("#amount").val();
 
-
         //get info as text
-        var accountName= $("#accountId").find(":selected").text();
-        var accountNameFrom= $("#accountIdFrom").find(":selected").text();
-        var accountNameTo= $("#accountIdTo").find(":selected").text();
+        var accountName = $("#accountId").find(":selected").text();
+        var accountNameFrom = $("#accountIdFrom").find(":selected").text();
+        var accountNameTo = $("#accountIdTo").find(":selected").text();
         var categoryName = $("#category-select").find(":selected").text();
         //create confirmation text
-        if(transactionType==='Transfer'){
-            var confirmationMessage=`Do you want to add the transaction?
+        if (transactionType === "Transfer") {
+            var confirmationMessage = `Do you want to add the transaction?
             
             Type: ${transactionType}
             ${accountNameFrom} ▶︎▶︎▶︎ ${accountNameTo}
             Category: ${categoryName}
             Amount: ${amount}
             Description: ${description}`;
-        }else{
-            var confirmationMessage=`Do you want to add the transaction?
+        } else {
+            var confirmationMessage = `Do you want to add the transaction?
 
             Account: ${accountName}
             Type: ${transactionType}
@@ -67,8 +53,9 @@ $(document).ready(async () => {
         }
         //set confirmation window
         const confirmation = window.confirm(confirmationMessage);
-        if (confirmation){
-            const result = await Post("transactions", {
+        let result;
+        if (confirmation) {
+            result = await Post("transactions", {
                 newTransaction: {
                     accountId: accountId, // account ID for Deposits or Withdraws
                     accountIdFrom: accountIdFrom, // sender ID if type = 'Transfer', otherwise null
@@ -79,7 +66,24 @@ $(document).ready(async () => {
                     description: description, // description of the transaction
                 },
             });
+        } else {
+            return;
         }
+
+        if (!showNotification(result)) {
+            return;
+        }
+
+        //clear input
+        $("input#type-deposit").prop("checked", true);
+        $("select#accountId option[value=-1]").attr("selected", true);
+        $("select#accountIdFrom option[value=-1]").attr("selected", true);
+        $("select#accountIdTo option[value=-1]").attr("selected", true);
+        $("select#category-select option[value=-1]").attr("selected", true);
+        $("#description").val("");
+        $("#amount").val("");
+        DisplayAccountSelectElement();
+        ChangeAddTransactionButtonAvailability();
     });
 
     //3. display lists of transactions
@@ -100,8 +104,6 @@ $(document).ready(async () => {
         categoryResponse.forEach((category) => {
             categoryMap[category.id] = category;
         });
-
-        console.log(transactionsResponse);
 
         // get t-body
         const $tableBody = $("#transaction-table-body");
@@ -157,11 +159,7 @@ $(document).ready(async () => {
                 }
             }
             //change button availability
-            if (!ValidateTransactionInput()) {
-                $("#add-transaction").attr("disabled", true);
-            } else {
-                $("#add-transaction").attr("disabled", false);
-            }
+            ChangeAddTransactionButtonAvailability();
         });
     });
 });
@@ -295,4 +293,33 @@ function ValidateTransactionInput() {
             return def.validation();
         })
         .every((res) => res);
+}
+
+function ChangeAddTransactionButtonAvailability() {
+    if (!ValidateTransactionInput()) {
+        $("#add-transaction").attr("disabled", true);
+    } else {
+        $("#add-transaction").attr("disabled", false);
+    }
+}
+
+function DisplayAccountSelectElement() {
+    //show-hide from,to,id depending on type
+    const accountId = $("#accountId");
+    const type = $('input[name="transactionType"]:checked').val();
+    const $fromToContainer = $("#from-to");
+    const $accountLabel = $("#acc");
+
+    $fromToContainer.hide();
+    $accountLabel.show();
+
+    if (type !== TRANSACTION_TYPE_TRANSFER) {
+        accountId.show();
+        $fromToContainer.hide();
+        $accountLabel.show();
+    } else {
+        accountId.hide();
+        $fromToContainer.show();
+        $accountLabel.hide();
+    }
 }
