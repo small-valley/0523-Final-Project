@@ -25,8 +25,8 @@ body {
 #navBar {
   background-color: gainsboro;
   width: 20vw;
-  height: 100vh; 
-  /* position: fixed;  */
+  min-height: 100vh; 
+  height:100%; 
   top: 0; 
   left: 0; 
   display: flex;
@@ -49,6 +49,7 @@ nav {
   flex-grow: 1;
   overflow-y: auto;
   padding-bottom: 1rem;
+  height:100%
 }
 
 nav a {

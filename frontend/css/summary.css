@@ -20,9 +20,24 @@ main {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 70vw; 
     margin: 0 auto; 
+    
 }
 
-
+.summary{
+    overflow: auto;
+}
+.summary::-webkit-scrollbar {
+    width: 6px; 
+  }
+  
+  .summary::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  .summary::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px; 
+  }
 ul {
     list-style: none;
     margin: 0;
