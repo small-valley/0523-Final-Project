@@ -3,7 +3,6 @@ function updateUI(account) {
       <tr>
         <td>${account.username}</td>
         <td>0</td>
-        <td><button class="removeBtn" data-account-id="${account.id}">Remove Account</button></td>
       </tr>
     `);
 

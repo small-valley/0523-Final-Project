@@ -26,34 +26,36 @@
     </div>
 
     <main>
-      Account summary
-      <ul></ul>
-      <selecter>
-        Filter by account:
-        <select id="filter-account"></select>
-        Filter by category:
-        <select id="filter-category"></select>
-        Filter by transaction type:
-        <select id="filter-type">
-          <option value="">---</option>
-          <option value="Deposit">Deposit</option>
-          <option value="Withdraw">Withdraw</option>
-          <option value="Transfer">Transfer</option>
-        </select>
-      </selecter>
-      <table>
-        <tr>
-          <th>Id</th>
-          <th>Username</th>
-          <th>Transaction Type</th>
-          <th>Category</th>
-          <th>Description</th>
-          <th>Amount</th>
-          <th>From</th>
-          <th>To</th>
-        </tr>
-        <tbody id="transaction-table-body"></tbody>
-      </table>
+      <div class="summary">
+        Transaction List
+        <ul></ul>
+        <selecter>
+          Filter by account:
+          <select id="filter-account"></select>
+          Filter by category:
+          <select id="filter-category"></select>
+          Filter by transaction type:
+          <select id="filter-type">
+            <option value="">---</option>
+            <option value="Deposit">Deposit</option>
+            <option value="Withdraw">Withdraw</option>
+            <option value="Transfer">Transfer</option>
+          </select>
+        </selecter>
+        <table>
+          <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Transaction Type</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>From</th>
+            <th>To</th>
+          </tr>
+          <tbody id="transaction-table-body"></tbody>
+        </table>
+      </div>
     </main>
     <script>
       var myTrakrHeading = document.getElementById("myTrakr");
