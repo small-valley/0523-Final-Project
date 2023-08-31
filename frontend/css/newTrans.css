@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+    flex-grow: 1;
+  }
+  
+  .transaction,.add-category{
+    width: 70vw;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin:1rem
+  }
+  
+  #selectBar {
+    margin-bottom: 10px;
+  }
+  
+  #selectBar input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  select,
+  input[type="number"],
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.6rem;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: lightgreen;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    border-radius: 0.6rem;
+  }
+  button:hover {
+    background-color: darkgreen;
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  #selectBar {
+    display: flex;
+    align-items: center;
+  }
+  
+  #selectBar input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  #selectBar input[type="radio"]:checked {
+    background-color: #333;
+    border-color: #333;
+  }
+  

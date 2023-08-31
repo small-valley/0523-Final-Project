@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+button {
+  padding: 10px 20px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  border-radius: 0.6rem;
+}
+button:hover {
+  background-color: darkgreen;
+  color: white;
+  transform: scale(1.1);
+}
+body {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+}
+
+#navBar {
+  background-color: gainsboro;
+  width: 20vw;
+  height: 100vh; 
+  /* position: fixed;  */
+  top: 0; 
+  left: 0; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#navBar h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 1rem;
+}
+
+nav a {
+  width: 90%;
+  margin: 0.5rem 0;
+  border: 1px solid #666;
+  border-radius: 0.8rem;
+  background-color: lightgreen;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.7rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.3s; 
+}
+
+nav a:hover {
+  background-color: lightgray;
+  color: black;
+  transform: scale(1.1);
+}
+
+.active {
+  background-color: darkgreen;
+  color: white;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTrakr</title>
+    <!-- jQuery link -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      defer
+    ></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/navBar.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+  </head>
+  <body>
+    <div id="navBar">
+      <h2 id="myTrakr">myTrakr</h2>
+      <nav>
+        <a href="home.html" class="active">Home</a>
+
+        <a href="addAcc.html">Add Accounts</a>
+        <a href="newTransaction.html">New Transaction</a>
+        <a href="index.html">Transaction List</a>
+      </nav>
+    </div>
+
+    <main>
+      <hr />
+      <h1>Click below to start managing your money at ease!</h1>
+      <button id="start">Get Started!</button>
+      <script>
+        var startButton = document.getElementById("start");
+        var myTrakrHeading = document.getElementById("myTrakr");
+
+        startButton.addEventListener("click", function () {
+          window.location.href = "addAcc.html";
+        });
+
+        myTrakrHeading.addEventListener("click", function () {
+          window.location.href = "home.html";
+        });
+      </script>
+    </main>
+
+    <script src="./js/helpers/Common.js" defer></script>
+    <script src="./js/helpers/Account.js" defer></script>
+    <script src="./js/helpers/Category.js" defer></script>
+    <script src="./js/helpers/Transaction.js" defer></script>
+    <script src="./js/helpers/Filter.js" defer></script>
+    <script src="./js/index.js" defer></script>
+  </body>
+</html>
