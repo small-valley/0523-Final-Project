@@ -22,15 +22,17 @@ $(async () => {
             newCategory: categoryInput.val(),
         });
 
-        //todo: show result in UI and handle server error
-        console.log("New Category", result);
+        //show result in UI and handle server error
+        if (!showNotification(result)) {
+            return;
+        }
 
         //add newly added category to select box
         categorySelect.append(
             `<option value=${result.id}>${result.name}</option>`
         );
 
-        //delete newly added category from input box
+        //clear input
         categoryInput.val("");
     });
 });

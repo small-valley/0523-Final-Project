@@ -98,4 +98,14 @@ main {
     background-color: #333;
     border-color: #333;
   }
+
+  p#acc {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  p.error-message {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
   

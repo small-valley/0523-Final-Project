@@ -29,7 +29,7 @@
     </header>
     <main>
       <div class="add-category">
-        <p>Add New Category</p>
+        <p>New Category:</p>
         <input
           type="text"
           name="category-input"
@@ -71,11 +71,12 @@
             <select name="accountIdFrom" id="accountIdFrom"></select>
             To:
             <select name="accountIdTo" id="accountIdTo"></select>
-            Category:
-            <select name="categoryId" id="category-select"></select>
           </div>
 
-          Description
+          Category:
+          <select name="categoryId" id="category-select"></select>
+
+          Description:
           <input
             type="text"
             placeholder="Type Here"
@@ -105,6 +106,7 @@
       });
     </script>
     <script src="./js/helpers/Common.js" defer></script>
+    <script src="./js/helpers/Notification.js" defer></script>
     <script src="./js/helpers/Account.js" defer></script>
     <script src="./js/helpers/Category.js" defer></script>
     <script src="./js/helpers/Transaction.js" defer></script>
