@@ -97,8 +97,8 @@ selecter {
 }
 
 .transactions-table-container {
-    max-width: 100%; /* この幅を調整してください */
-    overflow-x: auto; /* 横スクロールを有効にする */
+    max-width: 100%; 
+    overflow-x: auto; 
   }
 
 /* media query when window width is less than 800px */
