@@ -18,14 +18,13 @@
     <div id="navBar">
       <h2 id="myTrakr">myTrakr</h2>
       <nav>
-        <a href="home.html">Home</a>
-
+        <a href="index.html">Login</a>
         <a href="addAcc.html" class="active">Add Accounts</a>
         <a href="newTransaction.html">New Transaction</a>
-        <a href="index.html">Transaction List</a>
+        <a href="transactionList.html">Transaction List</a>
       </nav>
     </div>
-    <main>
+    <main style="display: none">
       <div id="main">
         <form id="addAcc" action="">
           New Account:
@@ -52,14 +51,9 @@
         </div>
       </div>
     </main>
-    <script>
-      var myTrakrHeading = document.getElementById("myTrakr");
-
-      myTrakrHeading.addEventListener("click", function () {
-        window.location.href = "home.html";
-      });
-    </script>
+    
     <script src="./js/helpers/Common.js" defer></script>
+    <script src="./js/helpers/Login.js" defer></script>
     <script src="./js/helpers/Notification.js" defer></script>
     <script src="./js/helpers/Account.js" defer></script>
     <script src="./js/helpers/Category.js" defer></script>
