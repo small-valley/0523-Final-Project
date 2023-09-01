@@ -100,7 +100,18 @@ selecter {
     max-width: 100%; 
     overflow-x: auto; 
   }
-
+  .transactions-table-container::-webkit-scrollbar {
+    height:6px; 
+  }
+  
+  .transactions-table-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  .transactions-table-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px; 
+  }
 /* media query when window width is less than 800px */
   @media screen and (max-width: 800px) {
     body {
