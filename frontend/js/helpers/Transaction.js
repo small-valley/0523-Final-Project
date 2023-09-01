@@ -93,6 +93,11 @@ $(document).ready(async () => {
         const categoryResponse = await Get("categories");
         const accountsResponse = await Get("accounts");
 
+        //Format transaction information into an array of objects
+        const transactions = transactionsResponse.flat().sort((a, b) => {
+            return a.id - b.id;
+        });
+
         // Format account information into an associative array
         const accountMap = {};
         accountsResponse.forEach((account) => {
@@ -108,30 +113,27 @@ $(document).ready(async () => {
         // get t-body
         const $tableBody = $("#transaction-table-body");
 
-        transactionsResponse.forEach((account) => {
-            // add transactions info to table
-            account.forEach((transaction) => {
-                const $row = $("<tr>");
-                $row.html(`
-          <td>${transaction.id}</td>d
-          <td>${accountMap[transaction.accountId].username}</td>
-          <td>${transaction.type}</td>
-          <td>${categoryMap[transaction.categoryId].name}</td>
-          <td>${transaction.description}</td>
-          <td>${transaction.amount}</td>
-          <td>${
-              transaction.accountIdFrom
-                  ? accountMap[transaction.accountIdFrom].username
-                  : "-"
-          }</td>
-          <td>${
-              transaction.accountIdTo
-                  ? accountMap[transaction.accountIdTo].username
-                  : "-"
-          }</td>
-        `);
-                $tableBody.append($row);
-            });
+        transactions.forEach((transaction) => {
+            const $row = $("<tr>");
+            $row.html(`
+                  <td>${transaction.id}</td>d
+                  <td>${accountMap[transaction.accountId].username}</td>
+                  <td>${transaction.type}</td>
+                  <td>${categoryMap[transaction.categoryId].name}</td>
+                  <td>${transaction.description}</td>
+                  <td>${transaction.amount}</td>
+                  <td>${
+                      transaction.accountIdFrom
+                          ? accountMap[transaction.accountIdFrom].username
+                          : "-"
+                  }</td>
+                  <td>${
+                      transaction.accountIdTo
+                          ? accountMap[transaction.accountIdTo].username
+                          : "-"
+                  }</td>
+                `);
+            $tableBody.append($row);
         });
     } catch (error) {
         console.error("Error fetching transaction data:", error);
