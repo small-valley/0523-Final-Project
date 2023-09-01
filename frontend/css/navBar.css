@@ -93,3 +93,23 @@ div#navBar p {
   text-align: center;
   font-size: 20px;
 }
+
+/* media query when window width is less than 800px*/
+@media screen and (max-width: 800px) {
+  body {
+    flex-direction: column; 
+  }
+  
+  #navBar {
+    width: 100%; 
+    min-height: auto; 
+  }
+  
+  nav {
+    height: auto; 
+  }
+  
+  nav a {
+    width: 100%; 
+  }
+}

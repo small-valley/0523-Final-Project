@@ -108,3 +108,24 @@ main {
     margin-bottom: 10px;
   }
   
+
+  /* media query when window width is less than 800px*/
+  @media screen and (max-width: 800px) {
+    body {
+      flex-direction: column; 
+    }
+    
+    .transaction, .add-category {
+      width: 90vw; 
+      margin: 1rem auto; 
+    }
+  }
+  
+  /* media query when window width is less than 600px*/
+  @media screen and (max-width: 400px) {
+    #selectBar{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
