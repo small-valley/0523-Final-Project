@@ -31,7 +31,7 @@ function updateUI(account,balance=0) {
           console.log("Unknown type:", transaction);
         }
       });
-    }
+    } 
     return balance;
   }
   
@@ -60,6 +60,10 @@ function updateUI(account,balance=0) {
     $("#addAcc").submit(async (event) => {
         event.preventDefault();
         const newName = $("#accountInput").val().trim();
+        if (accounts.some(account => account.username === newName)) {
+          alert("Account already exists!");
+          return;
+        }
         const result = await Post("accounts", {
             newAccount: newName,
         });
