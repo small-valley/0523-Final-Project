@@ -137,7 +137,7 @@ $(document).ready(async () => {
         console.error("Error fetching transaction data:", error);
     }
 
-    //4. set validation function
+    //4. set validation function to new transaction
     transactionValidationDefs.forEach((def, i) => {
         //prepare hidden error message
         $(def.elementSelector).after(
@@ -161,6 +161,13 @@ $(document).ready(async () => {
             //change button availability
             ChangeAddTransactionButtonAvailability();
         });
+    });
+
+    //5. set validation function to new category
+    $("#category-input").change(function () {
+        if ($(this).val().trim() !== "") {
+            $("#category-add-button").attr("disabled", false);
+        }
     });
 });
 
