@@ -112,4 +112,8 @@ div#navBar p {
   nav a {
     width: 100%; 
   }
+
+  div#navBar img {
+    display: none;
+  }
 }
