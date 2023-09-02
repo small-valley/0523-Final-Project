@@ -12,7 +12,7 @@ $(async () => {
         );
     });
 
-    $("#category-add-button").click(async () => {
+    $("#category-add-button").click(async function () {
         const categoryInput = $("#category-input");
         // return when input is empty
         if (categoryInput.val().trim() === "") {
@@ -34,5 +34,6 @@ $(async () => {
 
         //clear input
         categoryInput.val("");
+        $(this).attr("disabled", true);
     });
 });

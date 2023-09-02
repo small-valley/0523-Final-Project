@@ -81,6 +81,13 @@ function updateUI(account,balance=0) {
   
         // Clear input
         $("#accountInput").val("");
+        $("#accBtn").attr("disabled", true);
+    });
+
+    $("#accountInput").change(function () {
+        if ($(this).val().trim() !== "") {
+            $("#accBtn").attr("disabled", false);
+        }
     });
   });
   

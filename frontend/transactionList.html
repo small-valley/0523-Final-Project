@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTrakr</title>
+    <!-- jQuery link -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      defer
+    ></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/navBar.css" />
+    <link rel="stylesheet" href="./css/summary.css" />
+  </head>
+  <body>
+    <div id="navBar">
+      <h2 id="myTrakr">myTrakr</h2>
+      <nav>
+        <a href="index.html">Login</a>
+        <a href="addAcc.html">Add Accounts</a>
+        <a href="newTransaction.html">New Transaction</a>
+        <a href="transactionList.html" class="active">Transaction List</a>
+      </nav>
+    </div>
+
+    <main style="display: none">
+      <div class="summary">
+        Transaction List
+        <ul></ul>
+        <selecter>
+          Filter by account:
+          <select id="filter-account"></select>
+          Filter by category:
+          <select id="filter-category"></select>
+          Filter by transaction type:
+          <select id="filter-type">
+            <option value="">---</option>
+            <option value="Deposit">Deposit</option>
+            <option value="Withdraw">Withdraw</option>
+            <option value="Transfer">Transfer</option>
+          </select>
+        </selecter>
+        <div class="transactions-table-container">
+          <table>
+            <tr>
+              <th>Id</th>
+              <th>Username</th>
+              <th>Transaction Type</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>From</th>
+              <th>To</th>
+            </tr>
+            <tbody id="transaction-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <script>
+      var myTrakrHeading = document.getElementById("myTrakr");
+      myTrakrHeading.addEventListener("click", function () {
+        window.location.href = "index.html";
+      });
+    </script>
+  <script src="./js/helpers/Common.js" defer></script>
+  <script src="./js/helpers/Login.js" defer></script>
+  <script src="./js/helpers/Notification.js" defer></script>
+  <script src="./js/helpers/Account.js" defer></script>
+  <script src="./js/helpers/Category.js" defer></script>
+  <script src="./js/helpers/Transaction.js" defer></script>
+  <script src="./js/helpers/Filter.js" defer></script>
+  <script src="./js/index.js" defer></script>
+</body>
+
+</html>

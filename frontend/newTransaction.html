@@ -19,15 +19,14 @@
       <div id="navBar">
         <h2 id="myTrakr">myTrakr</h2>
         <nav>
-          <a href="home.html">Home</a>
-
+          <a href="index.html">Login</a>
           <a href="addAcc.html">Add Accounts</a>
           <a href="newTransaction.html" class="active">New Transaction</a>
-          <a href="index.html">Transaction List</a>
+          <a href="transactionList.html">Transaction List</a>
         </nav>
       </div>
     </header>
-    <main>
+    <main style="display: none">
       <div class="add-category">
         <p>New Category:</p>
         <input
@@ -36,7 +35,7 @@
           placeholder="Type Here"
           id="category-input"
         />
-        <button type="button" id="category-add-button">Add new category</button>
+        <button type="button" id="category-add-button" disabled>Add new category</button>
       </div>
       <div class="transaction">
         <form action="" id="transaction-form">
@@ -90,6 +89,7 @@
             placeholder="Type Here"
             name="amount"
             id="amount"
+            disabled
           />
 
           <button id="add-transaction" disabled>Add transaction</button>
@@ -98,14 +98,8 @@
 
       <hr />
     </main>
-    <script>
-      var myTrakrHeading = document.getElementById("myTrakr");
-
-      myTrakrHeading.addEventListener("click", function () {
-        window.location.href = "home.html";
-      });
-    </script>
     <script src="./js/helpers/Common.js" defer></script>
+    <script src="./js/helpers/Login.js" defer></script>
     <script src="./js/helpers/Notification.js" defer></script>
     <script src="./js/helpers/Account.js" defer></script>
     <script src="./js/helpers/Category.js" defer></script>
