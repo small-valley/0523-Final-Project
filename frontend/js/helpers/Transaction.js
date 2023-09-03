@@ -170,10 +170,21 @@ $(document).ready(async () => {
     });
 
     //5. set validation function to new category
+    const existingCategories = [];
+
     $("#category-input").change(function () {
-        if ($(this).val().trim() !== "") {
-            $("#category-add-button").attr("disabled", false);
+      const newCategory = $(this).val().trim();
+
+      if (newCategory !== "") {
+        if (existingCategories.includes(newCategory)) {
+          $("#category-add-button").attr("disabled", true);
+          $("#category-error").show();
+        } else {
+          existingCategories.push(newCategory); // Add the new category to the array
+          $("#category-add-button").attr("disabled", false);
+          $("#category-error").hide();
         }
+      }
     });
 
     //6. clear amount when acountId is changed
