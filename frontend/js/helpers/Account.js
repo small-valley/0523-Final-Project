@@ -57,32 +57,33 @@ function updateUI(account,balance=0) {
   
   
     //when addAcc clicked
-    $("#addAcc").submit(async (event) => {
-        event.preventDefault();
-        const newName = $("#accountInput").val().trim();
-        if (accounts.some(account => account.username === newName)) {
-          alert("Account already exists!");
-          return;
-        }
-        const result = await Post("accounts", {
-            newAccount: newName,
-        });
-  
-        //show result in UI and handle server error
-        if (!showNotification(result)) {
-            return;
-        }
-  
-        // Update the UI
-        updateUI({
-            id: result.id,
-            username: newName,
-        });
-  
-        // Clear input
-        $("#accountInput").val("");
-        $("#accBtn").attr("disabled", true);
-    });
+   // Event listener for when the "addAcc" form is submitted
+$("#addAcc").submit(async (event) => {
+  event.preventDefault();
+  const newName = $("#accountInput").val().trim();
+
+  const accounts = await Get("accounts");
+
+  if (accounts.some(account => account.username === newName)) {
+    alert("Account already exists!");
+    return;
+  }
+  const result = await Post("accounts", {
+    newAccount: newName,
+  });
+  if (!showNotification(result)) {
+    return;
+  }
+  updateUI({
+    id: result.id,
+    username: newName,
+  });
+
+  // Clear input
+  $("#accountInput").val("");
+  $("#accBtn").attr("disabled", true);
+});
+
 
     $("#accountInput").change(function () {
         if ($(this).val().trim() !== "") {

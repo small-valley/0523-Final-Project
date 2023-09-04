@@ -170,21 +170,27 @@ $(document).ready(async () => {
     });
 
     //5. set validation function to new category
-    const existingCategories = [];
+    $("#category-input").change(async function () {
+        const newCategory = $(this).val().trim();
 
-    $("#category-input").change(function () {
-      const newCategory = $(this).val().trim();
+        if (newCategory !== "") {
+            try {
+                // Fetch existing categories from the server
+                const existingCategoriesResponse = await Get("categories");
+                const existingCategories = existingCategoriesResponse.map(category => category.name);
 
-      if (newCategory !== "") {
-        if (existingCategories.includes(newCategory)) {
-          $("#category-add-button").attr("disabled", true);
-          $("#category-error").show();
-        } else {
-          existingCategories.push(newCategory); // Add the new category to the array
-          $("#category-add-button").attr("disabled", false);
-          $("#category-error").hide();
+                // Check if the new category already exists
+                if (existingCategories.includes(newCategory)) {
+                    $("#category-add-button").attr("disabled", true);
+                    $("#category-error").show();
+                } else {
+                    $("#category-add-button").attr("disabled", false);
+                    $("#category-error").hide();
+                }
+            } catch (error) {
+                console.error("Error fetching existing categories:", error);
+            }
         }
-      }
     });
 
     //6. clear amount when acountId is changed
