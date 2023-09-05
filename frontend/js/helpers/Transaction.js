@@ -146,8 +146,8 @@ $(document).ready(async () => {
     transactionValidationDefs.forEach((def, i) => {
         //prepare hidden error message
         $(def.elementSelector).after(
-            //todo: move css stylings to css file.
-            `<p id="error-message-${i}" class="error-message ${def.class}" style="display: none; color: red">${def.errMsg}</p>`
+            `<p id="error-message-${i}" class="error-message ${def.class}" style="display: none; color: red">
+              ${def.errMsg}</p>`
         );
 
         const errorMessageSelector =
@@ -173,6 +173,8 @@ $(document).ready(async () => {
     $("#category-input").change(function () {
         if ($(this).val().trim() !== "") {
             $("#category-add-button").attr("disabled", false);
+        } else {
+            $("#category-add-button").attr("disabled", true);
         }
     });
 

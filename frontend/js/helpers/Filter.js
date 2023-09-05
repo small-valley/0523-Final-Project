@@ -29,7 +29,11 @@ $(document).ready(async () => {
             const categoryResponse = await Get("categories");
             const accountsResponse = await Get("accounts");
 
-            const flatTransactions = transactionsResponse.flat();
+            const flatTransactions = transactionsResponse
+                .flat()
+                .sort((a, b) => {
+                    return a.id - b.id;
+                });
 
             //get filter info
             const filterAccount =

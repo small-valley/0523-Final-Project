@@ -18,8 +18,17 @@ $(async () => {
         if (categoryInput.val().trim() === "") {
             return;
         }
+        const cateogries = await Get("categories");
+        if (
+            cateogries.some(
+                (category) => category.name === categoryInput.val().trim()
+            )
+        ) {
+            alert("Category already exists!");
+            return;
+        }
         const result = await Post(CATEGORY_API_PATH, {
-            newCategory: categoryInput.val(),
+            newCategory: categoryInput.val().trim(),
         });
 
         //show result in UI and handle server error
